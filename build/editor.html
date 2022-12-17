@@ -54,7 +54,7 @@
 
         </div>
 
-        
+
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
@@ -127,10 +127,10 @@
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         Editor Options</a>
                   </li>
-                </ul> 
+                </ul>
 
                 <div id="editor-holder" class="tab-area active">
-                    <div id="editor" class="script" style="position: relative;">1 2 OP_ADD</div>
+                    <div id="editor" class="script" style="position: relative;">2 4 OP_ADD</div>
                 </div>
                 <div id="editor-assembly-holder" class="tab-area inactive">
                     <div id="editor-assembly" class="script" style="position: relative;">0101010293</div>
@@ -252,8 +252,8 @@
                         </button>
                     </div>
                     <div id="next-opcode-container" class=""></div>
-                    <span id="next-opcode-arrow" class="glyphicon glyphicon-arrow-down next-opcode" aria-hidden="true"></span> 
-                    
+                    <span id="next-opcode-arrow" class="glyphicon glyphicon-arrow-down next-opcode" aria-hidden="true"></span>
+
                     <h3 id="next-opcode-text" class="next-opcode">Next Argument</h3>
                     <span id="current-execution-pass" class="glyphicon glyphicon-ok completion-icon" aria-hidden="true" style="opacity:0.0; color:green;"></span>
                     <span id="current-execution-fail" class="glyphicon glyphicon-remove completion-icon" aria-hidden="true" style="opacity:0.0; color:red;"></span>
@@ -280,7 +280,7 @@
     <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="../build/src-noconflict/ext-language_tools.js"></script>
     <!-- Set up the editor window -->
-    <script> 
+    <script>
         ace.require("ace/ext/language_tools");
 
         var editorAssembly = ace.edit("editor-assembly");
@@ -324,5 +324,10 @@
     <script src="debugger.js"></script>
     <script src="editor.js"></script>
     <link rel="stylesheet" type="text/css" href="editor.css">
+    <script>
+      const editor = document.getElementById('editor')
+      const params = new URLSearchParams(location.search)
+      editor.innerHTML = params.get('asm') ?? editor.innerHTML
+    </script>
 </body>
 </html>
