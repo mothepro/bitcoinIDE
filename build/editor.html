@@ -238,6 +238,17 @@
                 <div id="debugger-centered">
                     <div id="debugger-container">
         	            <!-- <h2 id="debugger-subsection-title" class="subsection-title"> Debugger </h2> -->
+                      <button
+                        id="share-button"
+                        type="button"
+                        class="btn btn-success"
+                      >
+                        <span
+                          class="glyphicon glyphicon-share"
+                          aria-hidden="true"
+                        ></span>
+                        Share
+                      </button>
                         <button id="run-button" type="button" class="btn btn-success">
                             <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                             Run
@@ -325,9 +336,16 @@
     <script src="editor.js"></script>
     <link rel="stylesheet" type="text/css" href="editor.css">
     <script>
-      const editor = document.getElementById('editor')
+      const editorId = document.getElementById('editor')
       const params = new URLSearchParams(location.search)
-      editor.innerHTML = params.get('asm') ?? editor.innerHTML
+      editorId.innerHTML = params.get('asm') ?? editorId.innerHTML
+
+      document
+        .getElementById('share-button')
+        .addEventListener('click', () => {
+          params.set('asm', editorId.innerText)
+          location.search = params.toString()
+        })
     </script>
 </body>
 </html>
