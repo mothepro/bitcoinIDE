@@ -336,16 +336,12 @@
     <script src="editor.js"></script>
     <link rel="stylesheet" type="text/css" href="editor.css">
     <script>
-      const editorId = document.getElementById('editor')
-      const params = new URLSearchParams(location.search)
-      editorId.innerHTML = params.get('asm') ?? editorId.innerHTML
+      if (location.hash)
+        editor.getSession().setValue(location.hash)
 
       document
         .getElementById('share-button')
-        .addEventListener('click', () => {
-          params.set('asm', editorId.innerText)
-          location.search = params.toString()
-        })
+        .addEventListener('click', () => alert(location.hash = editor.getSession().getValue()))
     </script>
 </body>
 </html>
