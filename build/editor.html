@@ -234,6 +234,7 @@
     <div id="middle-panel" class="ide-panel">
         <div class="panel-row">
             <div id="executor-section" class="section centeredParent">
+                        <input type="hidden" id="share-pad" readonly>
                 <div id="debugger-section-title-tip" class=" title-tip"><p>Debugger</p></div>
                 <div id="debugger-centered">
                     <div id="debugger-container">
@@ -336,12 +337,19 @@
     <script src="editor.js"></script>
     <link rel="stylesheet" type="text/css" href="editor.css">
     <script>
-      if (location.hash)
-        editor.getSession().setValue(location.hash)
+      const shareButton = document.getElementById('share-button')
+      const sharePad = document.getElementById('share-pad')
 
-      document
-        .getElementById('share-button')
-        .addEventListener('click', () => alert(location.hash = editor.getSession().getValue()))
+      function updateShare() {
+        location.hash = editor.getSession().getValue()
+        sharePad.setAttribute('value', location)
+        sharePad.setAttribute('type', 'text')
+      }
+
+      if (location.hash)
+        editor.getSession().setValue(decodeURI(location.hash.slice(1)))
+
+      shareButton.addEventListener('click', updateShare)
     </script>
 </body>
 </html>
