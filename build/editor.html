@@ -339,9 +339,10 @@
     <script>
       const shareButton = document.getElementById('share-button')
       const sharePad = document.getElementById('share-pad')
+      const updateURL = () => location.hash = editor.getSession().getValue()
 
       function updateShare() {
-        location.hash = editor.getSession().getValue()
+        updateURL()
         sharePad.setAttribute('value', location)
         sharePad.setAttribute('type', 'text')
       }
@@ -349,6 +350,7 @@
       if (location.hash)
         editor.getSession().setValue(decodeURI(location.hash.slice(1)))
 
+      editor.getSession().addEventListener('change', updateURL)
       shareButton.addEventListener('click', updateShare)
     </script>
 </body>
