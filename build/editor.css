@@ -86,7 +86,7 @@ body {
 
 .nav > li > a:focus, .nav > li > a:hover {
 /*text-decoration: none;*/
- background-color: #005cb9; 
+ background-color: #005cb9;
 }
 
 
@@ -125,7 +125,7 @@ body {
 }
 
 .section-title {
-  	font-family: Verdana; 
+  	font-family: Verdana;
   	font-size: 2.0em;
 
 	height: 10%;
@@ -448,4 +448,9 @@ li.active a {
     left: 50%;
     bottom: 0;
     opacity: 0; /* display:none will hide validation tip in Chrome */
+}
+
+.stackElement {
+	text-align: left !important;
+	font-family: monospace !important;
 }
